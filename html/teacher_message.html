@@ -16,6 +16,23 @@
   </head>
 
   <body>
+    <!-- 资讯管理（Modal） -->
+    <div class="modal fade modal-message" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title modal-message-title" id="myModalLabel">模态框（Modal）标题</h4>
+                </div>
+                <div class="modal-body">按下 ESC 按钮退出。</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary">提交更改</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid title-nav">
         <div class="navbar-header">
@@ -91,7 +108,7 @@
                 </div>
                 <div class="page-ul">
                   <div class="panel-left-btn">
-                    <button type="button" class="btn btn-primary">添加</button>
+                    <button type="button" class="btn btn-primary btn-add-message">添加</button>
                   </div>
                   <ul class="pagination">
                       <li><a href="#">&laquo;</a></li>
@@ -109,12 +126,12 @@
           <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-0 teacher-class item"  style="display: none;">
             <ul class="list-group path">
                <li class="list-group-item">首页&nbsp;<span class="align-line">/</span>&nbsp;
-               选课管理
-                &nbsp;<span class="align-line">/</span>&nbsp;班级管理</li>
+               课表管理
+                &nbsp;<span class="align-line">/</span>&nbsp;教师课表</li>
             </ul>
             <div class="panel panel-default admin-admin">
               <div class="panel-heading">
-                <h3 class="panel-title">班级管理</h3>
+                <h3 class="panel-title">教师课表</h3>
               </div>
 
               <div class="panel-body">
@@ -189,6 +206,7 @@
     <script src="../js/jquery-3.3.1.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/usual.js"></script>
+    <script src="../js/common.js"></script>
     <script>
       console.log('test');
       var parent=$$('.all-item');

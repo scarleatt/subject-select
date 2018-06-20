@@ -13,9 +13,61 @@
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/dashboard.css" rel="stylesheet"> 
     <link rel="stylesheet" type="text/css" href="../css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap-table.min.css">
   </head>
 
   <body>
+    <!-- 资讯管理（Modal） -->
+    <div class="modal fade modal-message" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title modal-message-title" id="myModalLabel">模态框（Modal）标题</h4>
+                </div>
+                <div class="modal-body">按下 ESC 按钮退出。</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary">提交更改</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <!-- 课程添加（Modal） -->
+    <div class="modal fade modal-subject" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title modal-subject-title" id="myModalLabel">模态框（Modal）标题</h4>
+                </div>
+                <div class="modal-body">按下 ESC 按钮退出。</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary">提交更改</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <!-- 学生账号添加（Modal） -->
+    <div class="modal fade modal-add-student" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title modal-add-student-title" id="myModalLabel">模态框（Modal）标题</h4>
+                </div>
+                <div class="modal-body">按下 ESC 按钮退出。</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary">提交更改</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid title-nav">
         <div class="navbar-header">
@@ -47,29 +99,29 @@
             </a>
 
             <span class="list-group-item first-item">选课管理</span>
-            <a class="list-group-item  second-item" data-class="btn-subject">
+            <a class="list-group-item  second-item btn-subject" data-class="btn-subject">
               <i class="icon iconfont icon-dataset"></i>专业课程管理</a>
-            <a class="list-group-item  second-item" data-class="btn-class">
+            <a class="list-group-item  second-item btn-class" data-class="btn-class">
               <i class="icon iconfont icon-dataset"></i>班级管理</a>
 
             <span class="list-group-item first-item">账户管理</span>
-            <a class="list-group-item  second-item" data-class="btn-student">
+            <a class="list-group-item  second-item btn-student" data-class="btn-student">
               <i class="icon iconfont icon-datasource"></i>学生账户管理</a>
-            <a class="list-group-item  second-item" data-class="btn-teacher">
+            <a class="list-group-item  second-item btn-teacher" data-class="btn-teacher">
               <i class="icon iconfont icon-datasource"></i>教师账户管理</a>
-            <a class="list-group-item  second-item" data-class="btn-admin">
+            <a class="list-group-item  second-item btn-admin" data-class="btn-admin">
               <i class="icon iconfont icon-datasource"></i>管理员账户管理</a>
 
             <span class="list-group-item  first-item">教室管理</span>
-            <a class="list-group-item second-item" data-class="btn-room">
+            <a class="list-group-item second-item btn-room" data-class="btn-room">
               <i class="icon iconfont icon-manage"></i>教室管理</a>
 
             <span class="list-group-item first-item">专业管理</span>
-            <a class="list-group-item second-item" data-class="btn-major">
+            <a class="list-group-item second-item btn-major" data-class="btn-major">
               <i class="icon iconfont icon-allocation"></i>专业管理</a>
 
             <span class="list-group-item first-item">资料修改</span>
-            <a class="list-group-item second-item" data-class="btn-update-profile">
+            <a class="list-group-item second-item btn-update-profile" data-class="btn-update-profile">
               <i class="icon iconfont icon-edit"></i>
               修改密码</a>
           </div>
@@ -109,7 +161,7 @@
                 </div>
                 <div class="page-ul">
                   <div class="panel-left-btn">
-                    <button type="button" class="btn btn-primary">添加</button>
+                    <button type="button" class="btn btn-primary btn-add-message">添加</button>
                   </div>
                   <ul class="pagination">
                       <li><a href="#">&laquo;</a></li>
@@ -139,27 +191,34 @@
                   <table class="table table-striped table-bordered table-hover">
                     <thead>
                       <tr>
-                        <th>#</th>
-                        <th>Header</th>
-                        <th>Header</th>
-                        <th>Header</th>
-                        <th>Header</th>
+                        <th>课程编号</th>
+                        <th>课程名称</th>
+                        <th>课程性质</th>
+                        <th>所属专业</th>
+                        <th>课程学分</th>
+                        <th>操作</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td>1,001</td>
-                        <td>Lorem</td>
-                        <td>ipsum</td>
-                        <td>dolor</td>
-                        <td>sit</td>
+                        <td>12</td>
+                        <td>数据库</td>
+                        <td>必修</td>
+                        <td>信息安全</td>
+                        <td>3</td>
+                        <td><a>修改</a>
+                          <span class="align-line">/</span>
+                          <a>删除</a>
+                          <span class="align-line">/</span>
+                          <a>添加班级</a>
+                        </td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
                 <div class="page-ul">
                   <div class="panel-left-btn">
-                    <button type="button" class="btn btn-primary">课程添加</button>
+                    <button type="button" class="btn btn-primary btn-add-subject">课程添加</button>
                   </div>
                 </div>
               </div>
@@ -214,8 +273,8 @@
 
               <div class="panel-body">
                 <div class="table-responsive content-table">
-                  <table class="table table-striped table-bordered table-hover">
-                    <thead>
+                  <table class="table table-striped table-bordered table-hover add-student-table">
+                    <!-- <thead>
                       <tr>
                         <th>#</th>
                         <th>Header</th>
@@ -232,12 +291,12 @@
                         <td>dolor</td>
                         <td>sit</td>
                       </tr>
-                    </tbody>
+                    </tbody> -->
                   </table>
                 </div>
                 <div class="page-ul">
                   <div class="panel-left-btn">
-                    <button type="button" class="btn btn-primary">学生账号添加</button>
+                    <button type="button" class="btn btn-primary btn-add-student">学生账号添加</button>
                   </div>
                 </div>
               </div>
@@ -453,7 +512,10 @@
 
     <script src="../js/jquery-3.3.1.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap-table.min.js"></script>
+    <script src="../js/bootstrap-table-zh-CN.min.js"></script>
     <script src="../js/usual.js"></script>
+    <script src="../js/common.js"></script>
     <script>
       var parent=$$('.all-item');
       var childLists=['btn-message','btn-subject','btn-class','btn-student','btn-teacher','btn-admin','btn-room','btn-major','btn-update-profile'];
@@ -461,13 +523,14 @@
           var ev = event||window.event;
           var target = ev.target || ev.srcElement;
           if(target.nodeName.toLowerCase()=='a'){
+            var attr = target.getAttribute('data-class');
+            console.log(attr);
+
             var contentLists=$$('.main-content').children;
             contentLists=Array.prototype.slice.call(contentLists);
             contentLists.forEach( function(element, index) {
               element.style.display='none';
             });
-            var attr = target.getAttribute('data-class');
-            console.log(attr);
             var index=childLists.indexOf(attr);
             if (index>=0) {
               $$('.all-item .active').classList.add('second-item');
@@ -482,6 +545,7 @@
             }
           }
       },false);
+      
     </script>
     <!-- <script>
        $('#tb_order').bootstrapTable({
