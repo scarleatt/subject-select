@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- <link rel="icon" href="../favicon.ico"> -->
+
+    <title>学生账户</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/dashboard.css" rel="stylesheet"> 
+    <link rel="stylesheet" type="text/css" href="../css/iconfont.css">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid title-nav">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">学生选课系统</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <button type="button" class="btn navbar-btn navbar-right" id="dropdownMenu1" data-toggle="dropdown">
+            <i class="icon iconfont icon-user"></i>
+            张老师
+            <span class="caret"></span>
+          </button> 
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12 col-md-2">
+          <div class="list-group all-item">
+            <span class="list-group-item first-item">资讯管理</span>
+            <a class="list-group-item active" data-class="btn-message">
+              <i class="icon iconfont icon-information"></i>资讯管理
+            </a>
+  
+            <span class="list-group-item first-item">学生选课</span>
+            <a class="list-group-item  second-item" data-class="btn-major-class">
+              <i class="icon iconfont icon-dataset"></i>本专业课程</a>
+            <a class="list-group-item  second-item" data-class="btn-class">
+              <i class="icon iconfont icon-dataset"></i>课表查询</a>
+
+            <span class="list-group-item first-item">资料修改</span>
+            <a class="list-group-item second-item" data-class="btn-update-profile">
+              <i class="icon iconfont icon-edit"></i>
+              修改密码</a>
+          </div>
+        </div>
+        <div class="main-content " role="listbox">
+          <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-0 student-message item"  style="display: block;">
+            <ul class="list-group path">
+              <li class="list-group-item">首页</li>
+            </ul>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">资讯管理</h3>
+              </div>
+
+              <div class="panel-body">
+                <div class="table-responsive content-table">
+                  <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Header</th>
+                        <th>Header</th>
+                        <th>Header</th>
+                        <th>Header</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1,001</td>
+                        <td>Lorem</td>
+                        <td>ipsum</td>
+                        <td>dolor</td>
+                        <td>sit</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="page-ul">
+                  <div class="panel-left-btn">
+                    <button type="button" class="btn btn-primary">添加</button>
+                  </div>
+                  <ul class="pagination">
+                      <li><a href="#">&laquo;</a></li>
+                      <li><a href="#">1</a></li>
+                      <li><a href="#">2</a></li>
+                      <li><a href="#">3</a></li>
+                      <li><a href="#">4</a></li>
+                      <li><a href="#">5</a></li>
+                      <li><a href="#">&raquo;</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-0 student-major-class item"  style="display: none;">
+            <ul class="list-group path">
+               <li class="list-group-item">首页&nbsp;<span class="align-line">/</span>&nbsp;
+               学生选课
+                &nbsp;<span class="align-line">/</span>&nbsp;本专业课程</li>
+            </ul>
+            <div class="panel panel-default admin-admin">
+              <div class="panel-heading">
+                <h3 class="panel-title">本专业课程</h3>
+              </div>
+
+              <div class="panel-body">
+                <div class="table-responsive content-table">
+                  <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Header</th>
+                        <th>Header</th>
+                        <th>Header</th>
+                        <th>Header</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1,001</td>
+                        <td>Lorem</td>
+                        <td>ipsum</td>
+                        <td>dolor</td>
+                        <td>sit</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-0 student-class item"  style="display: none;">
+            <ul class="list-group path">
+               <li class="list-group-item">首页&nbsp;<span class="align-line">/</span>&nbsp;
+               学生选课
+                &nbsp;<span class="align-line">/</span>&nbsp;课表查询</li>
+            </ul>
+            <div class="panel panel-default admin-admin">
+              <div class="panel-heading">
+                <h3 class="panel-title">课表查询</h3>
+              </div>
+
+              <div class="panel-body">
+                <div class="table-responsive content-table">
+                  <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Header</th>
+                        <th>Header</th>
+                        <th>Header</th>
+                        <th>Header</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1,001</td>
+                        <td>Lorem</td>
+                        <td>ipsum</td>
+                        <td>dolor</td>
+                        <td>sit</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-0 student-update-profile item"  style="display: none;">
+            <ul class="list-group path">
+               <li class="list-group-item">首页&nbsp;<span class="align-line">/</span>&nbsp;资料修改
+                &nbsp;<span class="align-line">/</span>&nbsp;修改密码</li>
+            </ul>
+            <div class="panel panel-default admin-admin">
+              <div class="panel-heading">
+                <h3 class="panel-title">修改密码</h3>
+              </div>
+              <div class="panel-body update-password">
+                <form class="bs-example bs-example-form" role="form">
+                  <div class="password-line">
+                    <div class="password-line-content">
+                      请输入原密码：
+                      <input type="password" id="inputSourcePassword" class="form-control" required autofocus>  
+                      &nbsp;密码只能由数字和字母组成
+                    </div>
+                  </div>
+                  <div class="password-line">
+                    <div class="password-line-content">
+                      请输入新密码：
+                      <input type="password" id="inputNowPassword" class="form-control" required autofocus>  
+                      &nbsp;密码只能由数字和字母组成
+                    </div>
+                  </div>
+                  <div class="password-line">
+                    <div class="password-line-content">
+                      请确认新密码：
+                      <input type="password" id="inputNowPasswordRepeated" class="form-control" required autofocus>  
+                      &nbsp;密码只能由数字和字母组成
+                    </div>
+                  </div>
+                </form>
+                <div class="admin-password-update">
+                  <button type="button" class="btn btn-primary">提交</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/usual.js"></script>
+    <script>
+      console.log('test');
+      var parent=$$('.all-item');
+      var childLists=['btn-message','btn-major-class','btn-class','btn-update-profile'];
+      parent.addEventListener('click',function(ev){
+          var ev = event||window.event;
+          var target = ev.target || ev.srcElement;
+          if(target.nodeName.toLowerCase()=='a'){
+            var contentLists=$$('.main-content').children;
+            contentLists=Array.prototype.slice.call(contentLists);
+            contentLists.forEach( function(element, index) {
+              element.style.display='none';
+            });
+            var attr = target.getAttribute('data-class');
+            console.log(attr);
+            var index=childLists.indexOf(attr);
+            if (index>=0) {
+              $$('.all-item .active').classList.add('second-item');
+              $$('.all-item .active').classList.remove('active');
+              target.classList.add('active');
+              target.classList.remove('.second-item');
+
+              contentLists[index].style.display='block';
+              console.log(contentLists[index]);
+            } else {
+              alert("not found in childLists");
+            }
+          }
+      },false);
+    </script>
+    <!-- <script>
+       $('#tb_order').bootstrapTable({
+            url: '/TableStyle/GetOrder',         //请求后台的URL（*）
+            method: 'get',                      //请求方式（*）
+            //toolbar: '#toolbar',                //工具按钮用哪个容器
+            striped: true,                      //是否显示行间隔色
+            cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+            pagination: true,                   //是否显示分页（*）
+            sortable: false,                     //是否启用排序
+            sortOrder: "asc",                   //排序方式
+            queryParams: oTableInit.queryParams,//传递参数（*）
+            sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
+            pageNumber: 1,                       //初始化加载第一页，默认第一页
+            pageSize: 10,                       //每页的记录行数（*）
+            pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
+            search: true,                       //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
+            strictSearch: true,
+            showColumns: true,                  //是否显示所有的列
+            showRefresh: true,                  //是否显示刷新按钮
+            minimumCountColumns: 2,             //最少允许的列数
+            clickToSelect: true,                //是否启用点击选中行
+            height: 500,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+            uniqueId: "ID",                     //每一行的唯一标识，一般为主键列
+            showToggle: true,                    //是否显示详细视图和列表视图的切换按钮
+            cardView: false,                    //是否显示详细视图
+            detailView: false,                   //是否显示父子表
+            rowStyle: function (row, index) {
+                //这里有5个取值代表5中颜色['active', 'success', 'info', 'warning', 'danger'];
+                var strclass = "";
+                if (row.ORDER_STATUS == "待排产") {
+                    strclass = 'success';//还有一个active
+                }
+                else if (row.ORDER_STATUS == "已删除") {
+                    strclass = 'danger';
+                }
+                else {
+                    return {};
+                }
+                return { classes: strclass }
+            },
+            columns: [{
+                checkbox: true
+            }, {
+                field: 'ORDER_NO',
+                title: '订单编号'
+            }, {
+                field: 'ORDER_TYPE',
+                title: '订单类型'
+            }, {
+                field: 'ORDER_STATUS',
+                title: '订单状态'
+            }, {
+                field: 'REMARK',
+                title: '备注'
+            }, ]
+        });
+    </script> -->
+  </body>
+</html>
