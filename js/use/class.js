@@ -1,27 +1,17 @@
-// $('.btn-add-message').click(function () {
-//     console.log('add message');
-//     $(".modal-message-title").text("添加资讯");
-//     $('.modal-message').modal();
-// });
-// $('.btn-add-subject').click(function () {
-//     console.log('add subject');
-//     $(".modal-subject-title").text("添加课程");
-//     $('.modal-subject').modal();
-// });
-$('.btn-add-teacher').click(function () {
+$('.btn-add-class').click(function () {
     console.log('add subject');
-    $(".modal-add-teacher-title").text("教师添加");
-    $('.modal-add-teacher').modal();
-    $('.modal-add-teacher .btn-primary').on('click', function() {
+    $(".modal-add-class-title").text("教师添加");
+    $('.modal-add-class').modal();
+    $('.modal-add-class .btn-primary').on('click', function() {
         layer.confirm('请确认添加账号信息是否有误', {  
             btn: ['确定', '取消']   
         }, function(index) {  
             layer.close(index);  
             $.ajax({
                 type: "post",
-                url: `http://123.206.211.185:8080/cs/admin/teachers/`,
+                url: `http://123.206.211.185:8080/cs/admin/classs/`,
                 contentType: "application/x-www-form-urlencoded;charset=UTF-8",
-                data: `teaId=${$('.modal-add-teacher .teaId').val()}&name=${$('.modal-add-teacher .name').val()}&aid=${$('.modal-add-teacher .aid').val()}&major=${$('.modal-add-teacher .major').val()}&position=${$('.modal-add-teacher .position').val()}&password=${$('.modal-add-teacher .password').val()}`,
+                data: `teaId=${$('.modal-add-class .teaId').val()}&name=${$('.modal-add-class .name').val()}&aid=${$('.modal-add-class .aid').val()}&major=${$('.modal-add-class .major').val()}&position=${$('.modal-add-class .position').val()}&password=${$('.modal-add-class .password').val()}`,
                 success: function success(res) {
                     console.log(res);
                     if (res.status==0) {
@@ -29,13 +19,13 @@ $('.btn-add-teacher').click(function () {
                            icon: 1  
                         });  
                         $('button[name="refresh"]').click();
-                        console.log('add teacher account '+$('.teaId').val()+' successfully! and refresh');
-                        $('.modal-add-teacher button[data-dismiss="modal"]').click();
+                        console.log('add class account '+$('.teaId').val()+' successfully! and refresh');
+                        $('.modal-add-class button[data-dismiss="modal"]').click();
                     } else {
                         layer.alert(res.msg, {  
                            icon: 2  
                        });  
-                        console.log('failed add teacher account ');
+                        console.log('failed add class account ');
                     }
                 },
                 error: function(a) {  
@@ -50,17 +40,17 @@ $('.btn-add-teacher').click(function () {
 });
 
   //当点击查询按钮的时候执行  
-$(".btn-teacher").bind("click", function () {  
-    console.log('teacher list');
+$(".btn-class").bind("click", function () {  
+    console.log('class list');
     //先销毁表格  
-    $('.add-teacher-table').bootstrapTable('destroy');  
+    $('.add-class-table').bootstrapTable('destroy');  
     //初始化表格,动态从服务器加载数据  
-    $('.add-teacher-table').bootstrapTable({
-         url: 'http://123.206.211.185:8080/cs/admin/teachers?',         //请求后台的URL（*）
+    $('.add-class-table').bootstrapTable({
+         url: 'http://123.206.211.185:8080/cs/admin/classs?',         //请求后台的URL（*）
          dataType: "json",
          contentType: 'application/json,charset=utf-8', 
          method: 'get',      
-         toolbar: '.admin-teacher .toolbar',                //工具按钮用哪个容器
+         toolbar: '.admin-class .toolbar',                //工具按钮用哪个容器
          striped: true,                      //是否显示行间隔色
          cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
          pagination: true,                   //是否显示分页（*）
@@ -141,8 +131,8 @@ $(".btn-teacher").bind("click", function () {
             align:"center",
             formatter: function(value,row,index){  
                 var s=row.teaId+'';
-                return '<a href="javascript:void(0);" onclick="editteacherData('+"'"+row.teaId+"'"+')" style="margin-left:5px;"><li class="glyphicon glyphicon-pencil"></li></a>'+
-                '<a href="javascript:void(0);" onclick="removeteacherData('+"'"+row.teaId+"'"+')" style="margin-left:5px;"><li class="glyphicon glyphicon-remove"></li></a>';  
+                return '<a href="javascript:void(0);" onclick="editclassData('+"'"+row.teaId+"'"+')" style="margin-left:5px;"><li class="glyphicon glyphicon-pencil"></li></a>'+
+                '<a href="javascript:void(0);" onclick="removeclassData('+"'"+row.teaId+"'"+')" style="margin-left:5px;"><li class="glyphicon glyphicon-remove"></li></a>';  
             },
             edit:false},  ],
             onLoadSuccess: function(){  //加载成功时执行
@@ -154,23 +144,23 @@ $(".btn-teacher").bind("click", function () {
      });
 });  
 
-function removeteacherData(teaId) {
+function removeclassData(teaId) {
     layer.confirm('您确定要删除工号为 ' + teaId + ' 老师的账号吗?', {  
         btn: ['确定', '取消']   
     }, function(index) {  
         layer.close(index);  
         $.ajax({
             type: "delete",
-            url: `http://123.206.211.185:8080/cs/admin/teachers/${teaId}`,
+            url: `http://123.206.211.185:8080/cs/admin/classs/${teaId}`,
             success: function success(res) {
                 if (res.status==0) {
                     layer.alert('删除成功', {  
                        icon: 1  
                     });  
                     $('button[name="refresh"]').click();
-                    console.log('delete teacher account '+teaId+' successfully! and refresh');
+                    console.log('delete class account '+teaId+' successfully! and refresh');
                 } else {
-                    console.log('failed delete teacher account '+teaId);
+                    console.log('failed delete class account '+teaId);
                 }
             },
             error: function(a) {  
@@ -184,8 +174,8 @@ function removeteacherData(teaId) {
 }
 function getNowPage() {
     var res;
-    if ($$('.admin-teacher .pagination .active a')) {
-        res = parseInt($$('.admin-teacher .pagination .active a').innerText);
+    if ($$('.admin-class .pagination .active a')) {
+        res = parseInt($$('.admin-class .pagination .active a').innerText);
     } else {
         res = 1;
     }
@@ -194,33 +184,33 @@ function getNowPage() {
 }
 function getPageSize() {
     var res;
-    if ($$('.admin-teacher .page-size')) {
-        res = parseInt($$('.admin-teacher .page-size').innerText);
+    if ($$('.admin-class .page-size')) {
+        res = parseInt($$('.admin-class .page-size').innerText);
     } else {
         res = 10;
     }
     console.log(res);
     return res;
 }
-function editteacherData(teaId) {
-    $(".modal-edit-teacher-title").text("教师信息修改");
+function editclassData(teaId) {
+    $(".modal-edit-class-title").text("教师信息修改");
     var childLists=$$('tr[data-uniqueid="'+teaId+'"]').children;
     console.log(childLists[1].innerHTML);
-    $$('.modal-edit-teacher .teaId').value=childLists[1].innerHTML;
-    $$('.modal-edit-teacher .name').value=childLists[2].innerHTML;
-    $$('.modal-edit-teacher .aid').value=childLists[3].innerHTML;
-    $$('.modal-edit-teacher .major').value=childLists[4].innerHTML;
-    $$('.modal-edit-teacher .position').value=childLists[5].innerHTML;
+    $$('.modal-edit-class .teaId').value=childLists[1].innerHTML;
+    $$('.modal-edit-class .name').value=childLists[2].innerHTML;
+    $$('.modal-edit-class .aid').value=childLists[3].innerHTML;
+    $$('.modal-edit-class .major').value=childLists[4].innerHTML;
+    $$('.modal-edit-class .position').value=childLists[5].innerHTML;
 
-    $('.modal-edit-teacher').modal();
-    $('.modal-edit-teacher .btn-primary').on('click', function() {
+    $('.modal-edit-class').modal();
+    $('.modal-edit-class .btn-primary').on('click', function() {
         layer.confirm('确认修改该账户信息 ？', {  
             btn: ['确定', '取消']   
         }, function(index) {  
             layer.close(index);  
             $.ajax({
                 type: "put",
-                url: `http://123.206.211.185:8080/cs/admin/teachers/${teaId}?teaId=${$('.modal-edit-teacher .teaId').val()}&name=${$('.modal-edit-teacher .name').val()}&aid=${$('.modal-edit-teacher .aid').val()}&major=${$('.modal-edit-teacher .major').val()}&position=${$('.modal-edit-teacher .position').val()}&password=${$('.modal-edit-teacher .password').val()}`,
+                url: `http://123.206.211.185:8080/cs/admin/classs/${teaId}?teaId=${$('.modal-edit-class .teaId').val()}&name=${$('.modal-edit-class .name').val()}&aid=${$('.modal-edit-class .aid').val()}&major=${$('.modal-edit-class .major').val()}&position=${$('.modal-edit-class .position').val()}&password=${$('.modal-edit-class .password').val()}`,
                 success: function success(res) {
                     console.log(res);
                     if (res.status==0) {
@@ -228,13 +218,13 @@ function editteacherData(teaId) {
                            icon: 1  
                         });  
                         $('button[name="refresh"]').click();
-                        console.log('edit teacher account '+teaId+' successfully! and refresh');
-                        $('.modal-edit-teacher button[data-dismiss="modal"]').click();
+                        console.log('edit class account '+teaId+' successfully! and refresh');
+                        $('.modal-edit-class button[data-dismiss="modal"]').click();
                     } else {
                         layer.alert(res.msg, {  
                            icon: 2  
                        });  
-                        console.log('failed edit teacher account '+$('.teaId').val());
+                        console.log('failed edit class account '+$('.teaId').val());
                     }
                 },
                 error: function(a) {  

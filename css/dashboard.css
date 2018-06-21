@@ -212,3 +212,7 @@ a form input {
 .modal-edit-student label {
   margin-left: -20px;
 }
+.modal-add-subject label,
+.modal-edit-subject label {
+  margin-left: -60px;
+}
