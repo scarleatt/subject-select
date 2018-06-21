@@ -3,7 +3,7 @@ $('.btn-add-subject').click(function () {
     $(".modal-add-subject-title").text("课程添加");
     $('.modal-add-subject').modal();
     $('.modal-add-subject .btn-primary').on('click', function() {
-        layer.confirm('请确认添加账号信息是否有误', {  
+        layer.confirm('请确认添加课程信息是否有误', {  
             btn: ['确定', '取消']   
         }, function(index) {  
             layer.close(index);  
@@ -188,45 +188,3 @@ function getPageSize() {
     console.log(res);
     return res;
 }
-// function editsubjectData(courseCode) {
-//     $(".modal-edit-subject-title").text("信息修改");
-//     var childLists=$$('tr[data-uniqueid="'+courseCode+'"]').children;
-//     console.log($$('tr[data-uniqueid="'+courseCode+'"]'));
-//     $$('.modal-edit-subject .courseCode').value=childLists[2].innerHTML;
-//     $$('.modal-edit-subject .courseName').value=childLists[3].innerHTML;
-
-//     $('.modal-edit-subject').modal();
-//     $('.modal-edit-subject .btn-primary').on('click', function() {
-//         layer.confirm('确认修改该账户信息 ？', {  
-//             btn: ['确定', '取消']   
-//         }, function(index) {  
-//             layer.close(index);  
-//             $.ajax({
-//                 type: "put",
-//                 url: `http://123.206.211.185:8080/cs/admin/cmaps/${courseCode}?courseCode=${$('.modal-add-subject .courseCode').val()}&courseName=${$('.modal-add-subject .courseName').val()}`,
-//                 success: function success(res) {
-//                     console.log(res);
-//                     if (res.status==0) {
-//                         layer.alert('修改成功', {  
-//                            icon: 1  
-//                         });  
-//                         $('button[name="refresh"]').click();
-//                         console.log('edit subject account '+courseCode+' successfully! and refresh');
-//                         $('.modal-edit-subject button[data-dismiss="modal"]').click();
-//                     } else {
-//                         layer.alert(res.msg, {  
-//                            icon: 2  
-//                        });  
-//                         console.log('failed edit subject account '+$('.courseCode').val());
-//                     }
-//                 },
-//                 error: function(a) {  
-//                    layer.alert('添加失败', {  
-//                        icon: 2  
-//                    });  
-//                },  
-//                dataType: 'json'  
-//             });
-//         });  
-//     });
-// }

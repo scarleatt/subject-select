@@ -63,40 +63,40 @@
           <div class="list-group all-item">
             
             <span class="list-group-item first-item">学生选课</span>
-            <a class="list-group-item  second-item active" data-class="btn-major-class">
-              <i class="icon iconfont icon-dataset"></i>本专业课程</a>
-            <a class="list-group-item  second-item" data-class="btn-class">
+            <a class="list-group-item  second-item active btn-major-class" data-class="btn-major-class">
+              <i class="icon iconfont icon-dataset"></i>选课</a>
+            <a class="list-group-item  second-item btn-class" data-class="btn-class">
               <i class="icon iconfont icon-dataset"></i>课表查询</a>
 
           </div>
         </div>
         <div class="main-content " role="listbox">
-          
-          <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-0 student-major-class item"  style="display: block;">
+          <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-0 major-class item"  style="display: block;">
             <ul class="list-group path">
                <li class="list-group-item">首页&nbsp;<span class="align-line">/</span>&nbsp;
                学生选课
-                &nbsp;<span class="align-line">/</span>&nbsp;本专业课程</li>
+                &nbsp;<span class="align-line">/</span>&nbsp;选课</li>
             </ul>
-            <div class="panel panel-default admin-admin">
+            <div class="panel panel-default">
               <div class="panel-heading">
-                <h3 class="panel-title">本专业课程</h3>
+                <h3 class="panel-title">选课</h3>
               </div>
 
               <div class="panel-body">
                 <div class="table-responsive content-table">
-                  <table class="table table-striped table-bordered table-hover"></table>
+                  <table class="table table-striped table-bordered table-hover table-major-class"></table>
                 </div>
               </div>
             </div>
           </div>
+        
           <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-0 student-class item"  style="display: none;">
             <ul class="list-group path">
                <li class="list-group-item">首页&nbsp;<span class="align-line">/</span>&nbsp;
                学生选课
                 &nbsp;<span class="align-line">/</span>&nbsp;课表查询</li>
             </ul>
-            <div class="panel panel-default admin-admin">
+            <div class="panel panel-default">
               <div class="panel-heading">
                 <h3 class="panel-title">课表查询</h3>
               </div>
@@ -111,7 +111,13 @@
         </div>
       </div>
     </div>
-    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/layer.js"></script>
+    <script src="../js/jquery.jeditable.mini.js"></script>
+    <script src="../js/bootstrap-table.min.js"></script>
+    <script src="../js/bootstrap-table-zh-CN.min.js"></script>
+    <script src="../js/bootstrap-editable.min.js"></script>
+    <script src="../js/usual.js"></script>
+    <script src="../js/use/student_stu.js"></script>
     <script>
       var parent=$$('.all-item');
       var childLists=['btn-major-class','btn-class'];

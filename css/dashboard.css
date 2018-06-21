@@ -216,3 +216,12 @@ a form input {
 .modal-edit-subject label {
   margin-left: -60px;
 }
+.main-student {
+  width: 100%;
+}
+.teacher-class {
+  width: 1000px;
+  margin-top: 20px;
+  padding-top: 20px;
+  margin: 0 auto;
+}

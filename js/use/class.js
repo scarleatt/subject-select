@@ -9,7 +9,7 @@ $('.btn-add-class').click(function () {
             layer.close(index);  
             $.ajax({
                 type: "post",
-                url: `http://123.206.211.185:8080/cs/admin/classs/`,
+                url: `127.0.0.1:8080/cs/admin/jxbs?`,
                 contentType: "application/x-www-form-urlencoded;charset=UTF-8",
                 data: `teaId=${$('.modal-add-class .teaId').val()}&name=${$('.modal-add-class .name').val()}&aid=${$('.modal-add-class .aid').val()}&major=${$('.modal-add-class .major').val()}&position=${$('.modal-add-class .position').val()}&password=${$('.modal-add-class .password').val()}`,
                 success: function success(res) {
