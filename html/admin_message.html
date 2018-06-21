@@ -23,7 +23,7 @@
 
   <body>
     <!-- <a href="#" id="username-test" data-type="text" data-title="用户名">用户名</a> -->
-    <!-- 模态框（Modal） -->
+    <!-- 添加学生 -->
     <div class="modal fade modal-add-student" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -33,40 +33,211 @@
                 </div>
                 <div class="modal-body">
                   <form class="form-horizontal" role="form">
+
                     <div class="form-group">
+                       <label for="lastname" class="col-sm-2 control-label">姓名: </label>
+                      <div class="col-sm-4">
+                        <input type="text" class="form-control name" placeholder="请输入姓名">
+                      </div>
                       <label for="firstname" class="col-sm-2 control-label">学号: </label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="firstname" placeholder="请输入学号">
+                      <div class="col-sm-4">
+                        <input type="text" class="form-control stuId" placeholder="请输入学号">
                       </div>
                     </div>
                     <div class="form-group">
                       <label for="lastname" class="col-sm-2 control-label">性别: </label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="lastname" placeholder="请输入性别">
+                      <div class="col-sm-4">
+                        <input type="text" class="form-control gender" placeholder="请输入性别">
                       </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="lastname" class="col-sm-2 control-label">姓名: </label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="lastname" placeholder="请输入姓名">
-                      </div>
-                    </div>
-                    <div class="form-group">
                       <label for="lastname" class="col-sm-2 control-label">学院: </label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="lastname" placeholder="请输入学院">
+                      <div class="col-sm-4">
+                        <input type="text" class="form-control academy" placeholder="请输入学院">
                       </div>
                     </div>
                     <div class="form-group">
+                      <label for="lastname" class="col-sm-2 control-label">专业: </label>
+                      <div class="col-sm-4">
+                        <input type="text" class="form-control major" placeholder="请输入专业">
+                      </div>
                       <label for="lastname" class="col-sm-2 control-label">班级: </label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="lastname" placeholder="请输入班级">
+                      <div class="col-sm-4">
+                        <input type="text" class="form-control classNum" placeholder="请输入班级">
+                      </div>
+                    </div>
+                    
+                    <div class="form-group">
+                      <label for="lastname" class="col-sm-2 control-label">年级: </label>
+                      <div class="col-sm-4">
+                        <input type="text" class="form-control grade" placeholder="请输入年级">
+                      </div>
+                      <label for="lastname" class="col-sm-2 control-label">密码: </label>
+                      <div class="col-sm-4">
+                        <input type="password" class="form-control password" placeholder="请输入密码">
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary">提交更改</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <!-- 学生修改 -->
+    <div class="modal fade modal-edit-student" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-edit-student-title" id="myModalLabel">模态框（Modal）标题</h4>
+                </div>
+                <div class="modal-body">
+                  <form class="form-horizontal" role="form">
+
+                    <div class="form-group">
+                       <label for="lastname" class="col-sm-2 control-label">姓名: </label>
+                      <div class="col-sm-4">
+                        <input type="text" class="form-control name" placeholder="请输入姓名">
+                      </div>
+                      <label for="firstname" class="col-sm-2 control-label">学号: </label>
+                      <div class="col-sm-4">
+                        <input type="text" class="form-control stuId" placeholder="请输入学号">
                       </div>
                     </div>
                     <div class="form-group">
-                      <label for="lastname" class="col-sm-2 control-label">生日: </label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="lastname" placeholder="请输入生日">
+                      <label for="lastname" class="col-sm-2 control-label">性别: </label>
+                      <div class="col-sm-4">
+                        <input type="text" class="form-control gender" placeholder="请输入性别">
+                      </div>
+                      <label for="lastname" class="col-sm-2 control-label">学院: </label>
+                      <div class="col-sm-4">
+                        <input type="text" class="form-control academy" placeholder="请输入学院">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="lastname" class="col-sm-2 control-label">专业: </label>
+                      <div class="col-sm-4">
+                        <input type="text" class="form-control major" placeholder="请输入专业">
+                      </div>
+                      <label for="lastname" class="col-sm-2 control-label">班级: </label>
+                      <div class="col-sm-4">
+                        <input type="text" class="form-control classNum" placeholder="请输入班级">
+                      </div>
+                    </div>
+                    
+                    <div class="form-group">
+                      <label for="lastname" class="col-sm-2 control-label">年级: </label>
+                      <div class="col-sm-4">
+                        <input type="text" class="form-control grade" placeholder="请输入年级">
+                      </div>
+                      <label for="lastname" class="col-sm-2 control-label">密码: </label>
+                      <div class="col-sm-4">
+                        <input type="password" class="form-control password" placeholder="请输入密码">
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary">提交更改</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+     <!-- 添加教师 -->
+    <div class="modal fade modal-add-teacher" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-add-teacher-title" id="myModalLabel">模态框（Modal）标题</h4>
+                </div>
+                <div class="modal-body">
+                  <form class="form-horizontal" role="form">
+
+                    <div class="form-group">
+                       <label for="lastname" class="col-sm-2 control-label">工号: </label>
+                      <div class="col-sm-4">
+                        <input type="text" class="form-control teaId" placeholder="请输入工号">
+                      </div>
+                      <label for="firstname" class="col-sm-2 control-label">姓名: </label>
+                      <div class="col-sm-4">
+                        <input type="text" class="form-control name" placeholder="请输入老师姓名">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="lastname" class="col-sm-2 control-label">职称: </label>
+                      <div class="col-sm-4">
+                        <input type="text" class="form-control position" placeholder="请输入职称">
+                      </div>
+                      <label for="lastname" class="col-sm-2 control-label">密码: </label>
+                      <div class="col-sm-4">
+                        <input type="password" class="form-control password" placeholder="请输入密码">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="lastname" class="col-sm-2 control-label">学院名称: </label>
+                      <div class="col-sm-4">
+                        <input type="text" class="form-control major" placeholder="请输入学院">
+                      </div>
+                      
+                      <label for="lastname" class="col-sm-2 control-label">学院代号: </label>
+                      <div class="col-sm-4">
+                        <input type="text" class="form-control aid" placeholder="请输入学院代号">
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary">提交更改</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <!-- 教师修改 -->
+    <div class="modal fade modal-edit-teacher" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-edit-teacher-title" id="myModalLabel">模态框（Modal）标题</h4>
+                </div>
+                <div class="modal-body">
+                  <form class="form-horizontal" role="form">
+
+                    <div class="form-group">
+                       <label for="lastname" class="col-sm-2 control-label">工号: </label>
+                      <div class="col-sm-4">
+                        <input type="text" class="form-control teaId" placeholder="请输入工号">
+                      </div>
+                      <label for="firstname" class="col-sm-2 control-label">姓名: </label>
+                      <div class="col-sm-4">
+                        <input type="text" class="form-control name" placeholder="请输入老师姓名">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="lastname" class="col-sm-2 control-label">职称: </label>
+                      <div class="col-sm-4">
+                        <input type="text" class="form-control position" placeholder="请输入职称">
+                      </div>
+                      <label for="lastname" class="col-sm-2 control-label">学院代号: </label>
+                      <div class="col-sm-4">
+                        <input type="text" class="form-control aid" placeholder="请输入学院代号">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="lastname" class="col-sm-2 control-label">学院名称: </label>
+                      <div class="col-sm-4">
+                        <input type="text" class="form-control major" placeholder="请输入学院">
+                      </div>
+                      <label for="lastname" class="col-sm-2 control-label">密码: </label>
+                      <div class="col-sm-4">
+                        <input type="password" class="form-control password" placeholder="请输入密码">
                       </div>
                     </div>
                   </form>
@@ -149,26 +320,7 @@
 
               <div class="panel-body">
                 <div class="table-responsive content-table">
-                  <table class="table table-striped table-bordered table-hover">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th>Header</th>
-                        <th>Header</th>
-                        <th>Header</th>
-                        <th>Header</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>1,001</td>
-                        <td>Lorem</td>
-                        <td>ipsum</td>
-                        <td>dolor</td>
-                        <td>sit</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  <table class="table table-striped table-bordered table-hover"></table>
                 </div>
                 <div class="page-ul">
                   <div class="panel-left-btn">
@@ -248,26 +400,7 @@
 
               <div class="panel-body">
                 <div class="table-responsive content-table">
-                  <table class="table table-striped table-bordered table-hover">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th>Header</th>
-                        <th>Header</th>
-                        <th>Header</th>
-                        <th>Header</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>1,001</td>
-                        <td>Lorem</td>
-                        <td>ipsum</td>
-                        <td>dolor</td>
-                        <td>sit</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  <table class="table table-striped table-bordered table-hover"></table>
                 </div>
               </div>
             </div>
@@ -283,19 +416,8 @@
               </div>
 
               <div class="panel-body">
-                <div id="toolbar" class="btn-group">
-                    <!-- <button id="btn_add" type="button" class="btn btn-default rightSize">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
-                    </button>
-                    <button id="btn_edit" type="button" class="btn btn-default rightSize">
-                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>修改
-                    </button>
-                    <button id="btn_delete" type="button" class="btn btn-default rightSize">
-                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
-                    </button> -->
-                    <!-- <div class="panel-left-btn"> -->
-                      <button type="button" class="btn btn-primary btn-add-student">学生账号添加</button>
-                    <!-- </div> -->
+                <div class="btn-group toolbar">
+                  <button type="button" class="btn btn-primary btn-add-student">学生账号添加</button>
                 </div>
                 <div class="table-responsive content-table">
                   <table class="table table-striped table-bordered table-hover add-student-table"></table>
@@ -317,32 +439,14 @@
               </div>
 
               <div class="panel-body">
+                <div class="btn-group toolbar">
+                  <button type="button" class="btn btn-primary btn-add-teacher">教师账号添加</button>
+                </div>
                 <div class="table-responsive content-table">
-                  <table class="table table-striped table-bordered table-hover">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th>Header</th>
-                        <th>Header</th>
-                        <th>Header</th>
-                        <th>Header</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>1,001</td>
-                        <td>Lorem</td>
-                        <td>ipsum</td>
-                        <td>dolor</td>
-                        <td>sit</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  <table class="table table-striped table-bordered table-hover add-teacher-table"></table>
                 </div>
                 <div class="page-ul">
-                  <div class="panel-left-btn">
-                    <button type="button" class="btn btn-primary">教师账号添加</button>
-                  </div>
+                  
                 </div>
               </div>
             </div>
@@ -359,26 +463,7 @@
 
               <div class="panel-body">
                 <div class="table-responsive content-table">
-                  <table class="table table-striped table-bordered table-hover">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th>Header</th>
-                        <th>Header</th>
-                        <th>Header</th>
-                        <th>Header</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>1,001</td>
-                        <td>Lorem</td>
-                        <td>ipsum</td>
-                        <td>dolor</td>
-                        <td>sit</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  <table class="table table-striped table-bordered table-hover"></table>
                 </div>
                 <div class="page-ul">
                   <div class="panel-left-btn">
@@ -407,26 +492,7 @@
               </div>
               <div class="panel-body">
                 <div class="table-responsive content-table">
-                  <table class="table table-striped table-bordered table-hover">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th>Header</th>
-                        <th>Header</th>
-                        <th>Header</th>
-                        <th>Header</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>1,001</td>
-                        <td>Lorem</td>
-                        <td>ipsum</td>
-                        <td>dolor</td>
-                        <td>sit</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  <table class="table table-striped table-bordered table-hover"></table>
                 </div>
               </div>
             </div>
@@ -442,26 +508,7 @@
 
               <div class="panel-body">
                 <div class="table-responsive content-table">
-                  <table class="table table-striped table-bordered table-hover">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th>Header</th>
-                        <th>Header</th>
-                        <th>Header</th>
-                        <th>Header</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>1,001</td>
-                        <td>Lorem</td>
-                        <td>ipsum</td>
-                        <td>dolor</td>
-                        <td>sit</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  <table class="table table-striped table-bordered table-hover"></table>
                 </div>
                 <div class="page-ul">
                   <div class="panel-left-btn">
@@ -522,7 +569,8 @@
     <script src="../js/bootstrap-table-zh-CN.min.js"></script>
     <script src="../js/bootstrap-editable.min.js"></script>
     <script src="../js/usual.js"></script>
-    <script src="../js/common.js"></script>
+    <script src="../js/student.js"></script>
+    <script src="../js/teacher.js"></script>
     <script>
       var parent=$$('.all-item');
       var childLists=['btn-message','btn-subject','btn-class','btn-student','btn-teacher','btn-admin','btn-room','btn-major','btn-update-profile'];
