@@ -8,11 +8,11 @@ $('.btn-add-subject').click(function () {
     $(".modal-subject-title").text("添加课程");
     $('.modal-subject').modal();
 });
-// $('.btn-add-student').click(function () {
-//     console.log('add subject');
-//     $(".modal-add-student-title").text("添加课程");
-//     $('.modal-add-student').modal();
-// });
+$('.btn-add-student').click(function () {
+    console.log('add subject');
+    $(".modal-add-student-title").text("学生添加");
+    $('.modal-add-student').modal();
+});
 
   //当点击查询按钮的时候执行  
 $(".btn-student").bind("click", function () {  
@@ -85,110 +85,84 @@ $(".btn-student").bind("click", function () {
          }, {
              field: 'stuId',
              title: '学号',
-             // formatter: function (value, row, index) {
-             //     return "<a href=\"#\" name=\"stuId\" data-type=\"text\" data-pk=\""+row.stuId+"\" data-title=\"学号\">" + value + "</a>";
-             // }
+             formatter: function (value, row, index) {
+                 return "<a id=\"username\" name=\"stuId\" data-type=\"text\" data-pk=\""+row.stuId+"\" data-title=\"学号\">" + value + "</a>";
+             }
          }, {
              field: 'gender',
              title: '性别',
-             // formatter: function (value, row, index) {
-             //     return "<a href=\"#\" name=\"gender\" data-type=\"text\" data-pk=\""+row.gender+"\" data-title=\"性别\">" + value + "</a>";
-             // }
+             formatter: function (value, row, index) {
+                 return "<a name=\"gender\" data-type=\"text\" data-pk=\""+row.gender+"\" data-title=\"性别\">" + value + "</a>";
+             }
          }, {
              field: 'name',
              title: '姓名',
-             // formatter: function (value, row, index) {
-             //     return "<a href=\"#\" name=\"name\" data-type=\"text\" data-pk=\""+row.name+"\" data-title=\"姓名\">" + value + "</a>";
-             // }
+             formatter: function (value, row, index) {
+                 return "<a name=\"name\" data-type=\"text\" data-pk=\""+row.name+"\" data-title=\"姓名\">" + value + "</a>";
+             }
          }, {
              field: 'academy',
-             title: '所在学院',
-             // formatter: function (value, row, index) {
-             //     return "<a href=\"#\" name=\"academy\" data-type=\"text\" data-pk=\""+row.academy+"\" data-title=\"所在学院\">" + value + "</a>";
-             // }
+             title: '学院',
+             formatter: function (value, row, index) {
+                 return "<a name=\"academy\" data-type=\"text\" data-pk=\""+row.academy+"\" data-title=\"学院\">" + value + "</a>";
+             }
          }, {
              field: 'major',
              title: '专业',
-             // formatter: function (value, row, index) {
-             //     return "<a href=\"#\" name=\"major\" data-type=\"text\" data-pk=\""+row.major+"\" data-title=\"专业\">" + value + "</a>";
-             // }
+             formatter: function (value, row, index) {
+                 return "<a name=\"major\" data-type=\"text\" data-pk=\""+row.major+"\" data-title=\"专业\">" + value + "</a>";
+             }
          }, {
              field: 'classNum',
              title: '班级',
-             // formatter: function (value, row, index) {
-             //     return "<a href=\"#\" name=\"classNum\" data-type=\"text\" data-pk=\""+row.classNum+"\" data-title=\"班级\">" + value + "</a>";
-             // }
+             formatter: function (value, row, index) {
+                 return "<a name=\"classNum\" data-type=\"text\" data-pk=\""+row.classNum+"\" data-title=\"班级\">" + value + "</a>";
+             }
          }, {
              field: 'birthday',
              title: '生日',
-             // formatter: function (value, row, index) {
-             //     return "<a href=\"#\" name=\"birthday\" data-type=\"text\" data-pk=\""+row.birthday+"\" data-title=\"生日\">" + value + "</a>";
-             // }
+             formatter: function (value, row, index) {
+                 return "<a name=\"birthday\" data-type=\"text\" data-pk=\""+row.birthday+"\" data-title=\"生日\">" + value + "</a>";
+             }
          }, {
             field:"action",
             title:"操作",
             align:"center",
             formatter: function(value,row,index){  
-                // console.log(index);
-                // console.log(row);
-                var strHtml ='<a href="javascript:void(0)" onclick="editStudentData('+ row.stuId +')"><li class="glyphicon glyphicon-pencil"></li></a>'+  
-                    '<a href="javascript:void(0);" onclick="removeStudentData('+ row.stuId +')" style="margin-left:5px;"><li class="glyphicon glyphicon-remove"></li></a>';  
-                return strHtml; 
+                return '<a href="javascript:void(0);" onclick="removeStudentData('+ row.stuId +')" style="margin-left:5px;"><li class="glyphicon glyphicon-remove"></li></a>';  
             },
             edit:false},  ],
             onClickRow: function (row, $element) {
                 curRow = row;
+                console.log(curRow);
             },
             onLoadSuccess: function(){  //加载成功时执行
                 console.info("加载成功");
-                console.log($(".add-student-table a"));
-                $(".add-student-table a").editable({
-                    url: function (params) {
-                        var sName = $(this).attr("name");
-                        curRow[sName] = params.value;
-                        $.ajax({
-                            type: 'POST',
-                            url: "/Editable/Edit",
-                            data: curRow,
-                            dataType: 'JSON',
-                            success: function (data, textStatus, jqXHR) {
-                                alert('保存成功！');
-                            },
-                            error: function () { alert("error");}
-                        });
-                    },
-                    type: 'text'
-                });
+                $("#username").editable();
+                // console.log($(".add-student-table a"));
+                // $(".add-student-table a").editable({
+                //     url: function (params) {
+                //         console.log('test');
+                //         var sName = $(this).attr("name");
+                //         curRow[sName] = params.value;
+                //         console.log(curRow);
+                //         $.ajax({
+                //             type: 'PUT',
+                //             url: "http://123.206.211.185:8080/cs/admin/students/?",
+                //             data: curRow,
+                //             dataType: 'JSON',
+                //             success: function (data, textStatus, jqXHR) {
+                //                 alert('保存成功！');
+                //             },
+                //             error: function () { alert("error");}
+                //         });
+                //     },
+                //     type: 'text'
+                // });
             },
             onLoadError: function(){  //加载失败时执行
                 console.info("加载数据失败");
             },
-            // onEditableSave: function (field, row, oldValue, $el) {
-            //   $.ajax({
-            //       type: "put",
-            //       url: "http://123.206.211.185:8080/cs/admin/students/?",
-            //       data: row,
-            //       dataType: 'JSON',
-            //       success: function (data, status) {
-            //           if (status == "success") {
-            //               layer.alert('提交数据成功', {
-            //                 icon: 1
-            //               });
-            //           }
-            //       },
-            //       error: function () {
-            //           layer.alert('修改失败', {
-            //             icon: 2
-            //           });
-            //       },
-            //       complete: function () {
-            //         layer.alert('修改成功', {
-            //             icon: 1
-            //         })
-            //       }
-
-            //   });
-            // }
      });
 });  
 
@@ -246,3 +220,4 @@ function editStudentData() {
     //    dataType: 'json'  
     // });
 }
+// $('#username-test').editable();

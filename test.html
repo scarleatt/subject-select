@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- <link rel="icon" href="./favicon.ico"> -->
+
+    <title>管理员账户</title>
+
+    <!-- <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap-table.min.css"> -->
+   
+
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+     <link rel="stylesheet" href="./css/bootstrap-editable.css">
+     
+<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script> 
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    
+  </head>
+
+  <body>
+    <a href="#" id="username" data-type="text" data-pk="1" data-url="/post" data-title="Enter username">superuser</a>
+
+
+    <!-- <script src="./js/jquery-3.3.1.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script> -->
+    <script src="./js/bootstrap-editable.min.js"></script>
+    <script>
+      $.fn.editable.defaults.mode = 'inline';
+
+      $(function () {
+              $('#username').editable();
+          });
+    </script>
+  </body>
+</html>

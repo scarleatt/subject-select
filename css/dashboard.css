@@ -196,3 +196,10 @@ a {
 .all-item .active {
   color: white;
 }
+a form input {
+  width: 100%;
+  height: 100%;
+}
+.add-student-table a {
+  color: black;
+}

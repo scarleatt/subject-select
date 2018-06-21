@@ -14,10 +14,71 @@
     <link href="../css/dashboard.css" rel="stylesheet"> 
     <link rel="stylesheet" type="text/css" href="../css/iconfont.css">
     <link rel="stylesheet" type="text/css" href="../css/bootstrap-table.min.css">
-    <link rel="stylesheet" href="../css/bootstrap-editable.css">
+    <link rel="stylesheet" href="../css/bootstrap-editable.css"  rel="stylesheet">
+    
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+
   </head>
 
   <body>
+    <!-- <a href="#" id="username-test" data-type="text" data-title="用户名">用户名</a> -->
+    <!-- 模态框（Modal） -->
+    <div class="modal fade modal-add-student" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-add-student-title" id="myModalLabel">模态框（Modal）标题</h4>
+                </div>
+                <div class="modal-body">
+                  <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                      <label for="firstname" class="col-sm-2 control-label">学号: </label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="firstname" placeholder="请输入学号">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="lastname" class="col-sm-2 control-label">性别: </label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="lastname" placeholder="请输入性别">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="lastname" class="col-sm-2 control-label">姓名: </label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="lastname" placeholder="请输入姓名">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="lastname" class="col-sm-2 control-label">学院: </label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="lastname" placeholder="请输入学院">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="lastname" class="col-sm-2 control-label">班级: </label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="lastname" placeholder="请输入班级">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="lastname" class="col-sm-2 control-label">生日: </label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="lastname" placeholder="请输入生日">
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary">提交更改</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid title-nav">
         <div class="navbar-header">
@@ -453,11 +514,13 @@
       </div>
     </div>
 
-    <script src="../js/jquery-3.3.1.min.js"></script>
+    <!-- <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script> -->
     <script src="../js/layer.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.jeditable.mini.js"></script>
     <script src="../js/bootstrap-table.min.js"></script>
     <script src="../js/bootstrap-table-zh-CN.min.js"></script>
+    <script src="../js/bootstrap-editable.min.js"></script>
     <script src="../js/usual.js"></script>
     <script src="../js/common.js"></script>
     <script>
@@ -491,62 +554,5 @@
       },false);
       
     </script>
-    <!-- <script>
-       $('#tb_order').bootstrapTable({
-            url: '/TableStyle/GetOrder',         //请求后台的URL（*）
-            method: 'get',                      //请求方式（*）
-            //toolbar: '#toolbar',                //工具按钮用哪个容器
-            striped: true,                      //是否显示行间隔色
-            cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
-            pagination: true,                   //是否显示分页（*）
-            sortable: false,                     //是否启用排序
-            sortOrder: "asc",                   //排序方式
-            queryParams: oTableInit.queryParams,//传递参数（*）
-            sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
-            pageNumber: 1,                       //初始化加载第一页，默认第一页
-            pageSize: 10,                       //每页的记录行数（*）
-            pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
-            search: true,                       //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
-            strictSearch: true,
-            showColumns: true,                  //是否显示所有的列
-            showRefresh: true,                  //是否显示刷新按钮
-            minimumCountColumns: 2,             //最少允许的列数
-            clickToSelect: true,                //是否启用点击选中行
-            height: 500,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
-            uniqueId: "ID",                     //每一行的唯一标识，一般为主键列
-            showToggle: true,                    //是否显示详细视图和列表视图的切换按钮
-            cardView: false,                    //是否显示详细视图
-            detailView: false,                   //是否显示父子表
-            rowStyle: function (row, index) {
-                //这里有5个取值代表5中颜色['active', 'success', 'info', 'warning', 'danger'];
-                var strclass = "";
-                if (row.ORDER_STATUS == "待排产") {
-                    strclass = 'success';//还有一个active
-                }
-                else if (row.ORDER_STATUS == "已删除") {
-                    strclass = 'danger';
-                }
-                else {
-                    return {};
-                }
-                return { classes: strclass }
-            },
-            columns: [{
-                checkbox: true
-            }, {
-                field: 'ORDER_NO',
-                title: '订单编号'
-            }, {
-                field: 'ORDER_TYPE',
-                title: '订单类型'
-            }, {
-                field: 'ORDER_STATUS',
-                title: '订单状态'
-            }, {
-                field: 'REMARK',
-                title: '备注'
-            }, ]
-        });
-    </script> -->
   </body>
 </html>
