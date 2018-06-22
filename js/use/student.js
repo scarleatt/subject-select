@@ -1,13 +1,3 @@
-// $('.btn-add-message').click(function () {
-//     console.log('add message');
-//     $(".modal-message-title").text("添加资讯");
-//     $('.modal-message').modal();
-// });
-// $('.btn-add-subject').click(function () {
-//     console.log('add subject');
-//     $(".modal-subject-title").text("添加课程");
-//     $('.modal-subject').modal();
-// });
 $('.btn-add-student').click(function () {
     console.log('add subject');
     $(".modal-add-student-title").text("学生添加");

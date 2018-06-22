@@ -52,14 +52,14 @@ $(".btn-teacher").bind("click", function () {
          method: 'get',      
          toolbar: '.admin-teacher .toolbar',                //工具按钮用哪个容器
          striped: true,                      //是否显示行间隔色
-         cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+         cache: true,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
          pagination: true,                   //是否显示分页（*）
          sortable: false,                     //是否启用排序
          sortOrder: "asc",                   //排序方式
          queryParams: function(params) {
             return {
-                page: getNowPage(),
-                pageSize: getPageSize()
+                page: getTeacherNowPage(),
+                pageSize: getTeacherPageSize()
             };
          },
          sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
@@ -195,7 +195,7 @@ function removeteacherData(teaId) {
         });
     });  
 }
-function getNowPage() {
+function getTeacherNowPage() {
     var res;
     if ($$('.admin-teacher .pagination .active a')) {
         res = parseInt($$('.admin-teacher .pagination .active a').innerText);
@@ -205,7 +205,7 @@ function getNowPage() {
     console.log(res);
     return res;
 }
-function getPageSize() {
+function getTeacherPageSize() {
     var res;
     if ($$('.admin-teacher .page-size')) {
         res = parseInt($$('.admin-teacher .page-size').innerText);

@@ -11,23 +11,17 @@ $(".btn-major-class").bind("click", function () {
 }); 
 function f() {
     $('.table-major-class').bootstrapTable({
-         url: 'http://123.206.211.185:8080/cs/admin/cmaps?',         //请求后台的URL（*）
-         method: 'get',      
-         toolbar: '.admin-subject .toolbar',                //工具按钮用哪个容器
+         url: 'http://123.206.211.185:8080/cs/student/courses',         //请求后台的URL（*）
+         method: 'GET',      
+         // toolbar: '.admin-subject .toolbar',                //工具按钮用哪个容器
          striped: true,                      //是否显示行间隔色
          cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
          pagination: true,                   //是否显示分页（*）
          sortable: false,                     //是否启用排序
          sortOrder: "asc",                   //排序方式
-         queryParams: function(params) {
-            return {
-                page: getNowPage(),
-                pageSize: getPageSize()
-            };
-         },
          sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
          pageNumber: 1,                       //初始化加载第一页，默认第一页
-         pageSize: 10,                       //每页的记录行数（*）
+         pageSize: 30,                       //每页的记录行数（*）
          pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
          search: true,                       //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
          searchOnEnterKey: true,
@@ -45,13 +39,19 @@ function f() {
          detailView: false,                   //是否显示父子表
          pagination: true,
          showPaginationSwitch:true,
+         queryParams: function(params) {
+            return {
+                page: getNowStuClassPage(),
+                pageSize: getStuClassPageSize()
+            };
+         },
          responseHandler: function(res) {
             console.log(res);
             var result;
-            if (res.data && res.data.pages>0) {
+            if (res.data && res.data.length>0) {
                 result =  {
-                    "total": res.data.total,//总数据条数
-                    "rows": res.data.list   //数据    
+                    "total": res.data.length,//总数据条数
+                    "rows": res.data   //数据    
                 };
             } else {
                 result = {
@@ -69,27 +69,33 @@ function f() {
              title: '序号',
              align: 'center'
          }, {
-             field: 'courseCode',
-             title: '课程代号',
+             field: 'teacher',
+             title: '任课教师',
              align: 'center'
          }, {
-             field: 'courseName',
+             field: 'jxbName',
              title: '课程名称',
              align: 'center'
          },  {
+            field: 'classRoom',
+            title: '上课地点',
+            align: 'center'
+         }, {
+              title: '上课时间',
+              align: 'center',
+              formatter: function(value,row,index){  
+                  return row.day+""+row.lesson+" "+row.rawWeek;
+              },
+         }, {
             field:"action",
             title:"操作",
             align:"center",
             formatter: function(value,row,index){  
                 var s=row.teaId+'';
-                return '<a href="javascript:void(0);" onclick="selectClickedCourse('+"'"+row.courseCode+"','"+row.courseName+"'"+')" style="margin-left:5px;"><li class="glyphicon glyphicon-ok"></li></a>'+
-                '<a href="javascript:void(0);" onclick="cancelClickedCourse('+"'"+row.courseCode+"','"+row.courseName+"'"+')" style="margin-left:15px;"><li class="glyphicon glyphicon-remove"></li></a>';  
+                return '<a href="javascript:void(0);" onclick="selectClickedCourse('+"'"+row.jxbId+"','"+row.jxbName+"'"+')" style="margin-left:5px;"><li class="glyphicon glyphicon-ok"></li></a>'+
+                '<a href="javascript:void(0);" onclick="cancelClickedCourse('+"'"+row.jxbId+"','"+row.jxbName+"'"+')" style="margin-left:15px;"><li class="glyphicon glyphicon-remove"></li></a>';  
             },
             edit:false},],
-        onClickRow: function (row, $element) {
-            curRow = row;
-            console.log(curRow);
-        },
         onLoadSuccess: function(){  //加载成功时执行
             console.info("加载成功");
         },
@@ -98,17 +104,15 @@ function f() {
         },
      });
 }
-function selectClickedCourse(courseCode, courseName) {
+function selectClickedCourse(jxbId, jxbName) {
 
     $.ajax({
         type: "POST",
-        url: `http://123.206.211.185:8080/cs/student/cs.do?`,
-        contentType: "application/x-www-form-urlencoded;charset=UTF-8",
-        data: `jxbId=${courseName}&token=${localStorage.getItem('stuId')}`,
+        url: `http://123.206.211.185:8080/cs/student/cs.do?jxbId=${jxbId}&token=${localStorage.getItem('stuId')}`,
         success: function success(res) {
             console.log(res);
             if (res.status==0) {
-                layer.alert(`你成功选上了 ${courseName} 课程`, {  
+                layer.alert(`你成功选上了 ${jxbName} 课程`, {  
                    icon: 1  
                 });  
             } else {
@@ -126,14 +130,14 @@ function selectClickedCourse(courseCode, courseName) {
        dataType: 'json'  
     });
 }
-function cancelClickedCourse(courseCode, courseName) {
+function cancelClickedCourse(jxbId, jxbName) {
     $.ajax({
         type: "DELETE",
-        url: `http://123.206.211.185:8080/cs/student/courses?jxbId=${courseName}&token=${localStorage.getItem('stuId')}`,
+        url: `http://123.206.211.185:8080/cs/student/courses?jxbId=${jxbId}&token=${localStorage.getItem('stuId')}`,
         success: function success(res) {
             console.log(res);
             if (res.status==0) {
-                layer.alert(`你成功取消了 ${courseName} 课程`, {  
+                layer.alert(`你成功取消了 ${jxbName} 课程`, {  
                    icon: 1  
                 });  
             } else {
@@ -151,7 +155,7 @@ function cancelClickedCourse(courseCode, courseName) {
        dataType: 'json'  
     });
 }
-function getNowPage() {
+function getNowStuClassPage() {
     var res;
     if ($$('.admin-subject .pagination .active a')) {
         res = parseInt($$('.admin-subject .pagination .active a').innerText);
@@ -161,7 +165,7 @@ function getNowPage() {
     console.log(res);
     return res;
 }
-function getPageSize() {
+function getStuClassPageSize() {
     var res;
     if ($$('.admin-subject .page-size')) {
         res = parseInt($$('.admin-subject .page-size').innerText);
@@ -171,10 +175,14 @@ function getPageSize() {
     console.log(res);
     return res;
 }
+
+
+
 $('.btn-class').bind("click", function () {  
-    $('.table-major-class').bootstrapTable('destroy');
-    $('.table-major-class').bootstrapTable({
-         url: `http://123.206.211.185:8080/cs/student/courses/${localStorage.getItem('stuId')}`,         //请求后台的URL（*）
+    console.log('test');
+    $('.student-subject-list').bootstrapTable('destroy');
+    $('.student-subject-list').bootstrapTable({
+         url: `http://123.206.211.185:8080/cs/student/courses/20150000`,         //请求后台的URL（*）
          method: 'get',      
          // toolbar: '.admin-subject .toolbar',                //工具按钮用哪个容器
          striped: true,                      //是否显示行间隔色
@@ -228,44 +236,30 @@ $('.btn-class').bind("click", function () {
         columns: [{
              checkbox: true,
          }, {
-             field: 'courseCode',
-             title: '课程代号',
-             align: 'center'
-         }, {
-             field: 'jxbId',
-             title: '教学班代号',
-             align: 'center'
-         }, {
-             field: 'jxbName',
-             title: '教学班名称',
-             align: 'center'
-         }, {
-             field: 'day',
-             title: '具体天数',
-             align: 'center'
-         }, {
-             field: 'lesson',
-             title: '具体时间',
-             align: 'center'
-         }, {
-             field: 'period',
-             title: '上课时长',
-             align: 'center'
-         }, {
-             field: 'classRoom',
-             title: '教室',
+             field: 'id',
+             title: '序号',
              align: 'center'
          }, {
              field: 'teacher',
              title: '任课教师',
              align: 'center'
          }, {
+             field: 'jxbName',
+             title: '课程名称',
+             align: 'center'
+         },  {
+            field: 'classRoom',
+            title: '上课地点',
+            align: 'center'
+         }, {
+              title: '上课时间',
+              align: 'center',
+              formatter: function(value,row,index){  
+                  return row.day+""+row.lesson+" "+row.rawWeek;
+              },
+         }, {
              field: 'type',
              title: '课程类别',
-             align: 'center'
-         }, {
-             field: 'week',
-             title: '周数',
              align: 'center'
          }],
         onLoadSuccess: function(){  //加载成功时执行

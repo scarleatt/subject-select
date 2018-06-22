@@ -13,6 +13,11 @@
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/dashboard.css" rel="stylesheet"> 
     <link rel="stylesheet" type="text/css" href="../css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap-table.min.css">
+    <link rel="stylesheet" href="../css/bootstrap-editable.css"  rel="stylesheet">
+    
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
   </head>
 
   <body>
@@ -49,8 +54,7 @@
 
               <div class="panel-body">
                 <div class="table-responsive content-table">
-                  <table class="table table-striped table-bordered table-hover teacher-subject-list">
-                  </table>
+                  <table class="table table-striped table-bordered table-hover teacher-subject-list"></table>
                 </div>
               </div>
             </div>
@@ -58,14 +62,16 @@
         </div>
     </div>
 
-    <script src="../js/jquery-3.3.1.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/layer.js"></script>
+   <script src="../js/layer.js"></script>
     <script src="../js/jquery.jeditable.mini.js"></script>
     <script src="../js/bootstrap-table.min.js"></script>
     <script src="../js/bootstrap-table-zh-CN.min.js"></script>
     <script src="../js/bootstrap-editable.min.js"></script>
     <script src="../js/usual.js"></script>
+    <script src="../js/use/student.js"></script>
+    <script src="../js/use/teacher.js"></script>
+    <script src="../js/use/subject.js"></script>
+    <script src="../js/use/class.js">  </script>
     <script>
       $(document).ready(function() {
         console.log('test');
@@ -74,36 +80,36 @@
              url: `http://123.206.211.185:8080/cs/teacher/courses/${localStorage.getItem('teaId')}?week=3`,         //请求后台的URL（*）
              method: 'get',      
              // toolbar: '.admin-subject .toolbar',                //工具按钮用哪个容器
-             striped: true,                      //是否显示行间隔色
-             cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
-             pagination: true,                   //是否显示分页（*）
-             sortable: false,                     //是否启用排序
-             sortOrder: "asc",                   //排序方式
-             // queryParams: function(params) {
-             //    return {
-             //        page: getNowPage(),
-             //        pageSize: getPageSize()
-             //    };
-             // },
-             sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
-             pageNumber: 1,                       //初始化加载第一页，默认第一页
-             pageSize: 10,                       //每页的记录行数（*）
-             pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
-             search: true,                       //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
-             searchOnEnterKey: true,
-             queryParamsType:'limit',
-             // trimOnSearch: true;
-             strictSearch: true,
-             showColumns: true,                  //是否显示所有的列
-             showRefresh: true,                  //是否显示刷新按钮
-             minimumCountColumns: 2,             //最少允许的列数
-             // clickToSelect: true,                //是否启用点击选中行
-             height: 500,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
-             uniqueId: "courseCode",                     //每一行的唯一标识，一般为主键列
-             showToggle: false,                    //是否显示详细视图和列表视图的切换按钮
-             cardView: false,                    //是否显示详细视图
-             detailView: false,                   //是否显示父子表
-             pagination: true,
+            striped: true,                      //是否显示行间隔色
+              cache: true,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+              pagination: true,                   //是否显示分页（*）
+              sortable: false,                     //是否启用排序
+              sortOrder: "asc",                   //排序方式
+              // queryParams: function(params) {
+              //    return {
+              //        page: getNowPage(),
+              //        pageSize: getPageSize()
+              //    };
+              // },
+              sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
+              pageNumber: 1,                       //初始化加载第一页，默认第一页
+              pageSize: 10,                       //每页的记录行数（*）
+              pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
+              search: true,                       //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
+              searchOnEnterKey: true,
+              queryParamsType:'limit',
+              // trimOnSearch: true;
+              strictSearch: true,
+              showColumns: true,                  //是否显示所有的列
+              showRefresh: true,                  //是否显示刷新按钮
+              minimumCountColumns: 2,             //最少允许的列数
+              // clickToSelect: true,                //是否启用点击选中行
+              height: 500,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+              uniqueId: "teaId",                     //每一行的唯一标识，一般为主键列
+              showToggle: false,                    //是否显示详细视图和列表视图的切换按钮
+              cardView: false,                    //是否显示详细视图
+              detailView: false,                   //是否显示父子表
+              pagination: true,
              showPaginationSwitch:true,
              responseHandler: function(res) {
                 var result;
@@ -128,25 +134,15 @@
                  title: '课程代号',
                  align: 'center'
              }, {
-                 field: 'jxbId',
-                 title: '教学班代号',
-                 align: 'center'
-             }, {
                  field: 'jxbName',
                  title: '教学班名称',
                  align: 'center'
              }, {
-                 field: 'day',
-                 title: '具体天数',
-                 align: 'center'
-             }, {
-                 field: 'lesson',
-                 title: '具体时间',
-                 align: 'center'
-             }, {
-                 field: 'period',
-                 title: '上课时长',
-                 align: 'center'
+                  title: '上课时间',
+                  align: 'center',
+                  formatter: function(value,row,index){  
+                      return row.day+""+row.lesson+" "+row.rawWeek;
+                  },
              }, {
                  field: 'classRoom',
                  title: '教室',
@@ -158,10 +154,6 @@
              }, {
                  field: 'type',
                  title: '课程类别',
-                 align: 'center'
-             }, {
-                 field: 'week',
-                 title: '周数',
                  align: 'center'
              }],
             onLoadSuccess: function(){  //加载成功时执行

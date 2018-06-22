@@ -225,3 +225,10 @@ a form input {
   padding-top: 20px;
   margin: 0 auto;
 }
+.modal-add-class .form-horizontal label,
+.modal-edit-class .form-horizontal label {
+  margin-left: -52px;
+}
+.major-class .fixed-table-pagination {
+  /*display: none !important;;*/
+}

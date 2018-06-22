@@ -48,7 +48,10 @@ $(".btn-subject").bind("click", function () {
     //初始化表格,动态从服务器加载数据  
     initSubjectTable();
 }); 
-
+$('.btn-add-class').bind('click', function() {
+    $('.add-subject-table').bootstrapTable('destroy');  
+    initSubjectTable();
+})
 function initSubjectTable() {
     $('.add-subject-table').bootstrapTable({
          url: 'http://123.206.211.185:8080/cs/admin/cmaps?',         //请求后台的URL（*）
@@ -121,9 +124,9 @@ function initSubjectTable() {
             title:"操作",
             align:"center",
             formatter: function(value,row,index){ 
-            return  '<a href="javascript:void(0);" onclick="removesubjectData('+ "'"+row.courseCode+"'" +')" style="margin-left:5px;"><li class="glyphicon glyphicon-remove"></li></a>';
-                // return '<a href="javascript:void(0);" onclick="editsubjectData('+"'"+row.courseCode+"'"+')" style="margin-left:5px;"><li class="glyphicon glyphicon-pencil"></li></a>'+
-                // '<a href="javascript:void(0);" onclick="removesubjectData('+ "'"+row.courseCode+"'" +')" style="margin-left:5px;"><li class="glyphicon glyphicon-remove"></li></a>';  
+            // return  '<a href="javascript:void(0);" onclick="removesubjectData('+ "'"+row.courseCode+"'" +')" style="margin-left:5px;"><li class="glyphicon glyphicon-remove"></li></a>';
+                return '<a href="javascript:void(0);" onclick="removesubjectData('+ "'"+row.courseCode+"'" +')" style="margin-left:5px;"><li class="glyphicon glyphicon-remove"></li></a>'+
+                '<a href="javascript:void(0);" onclick="addsubjectClass('+"'"+row.courseCode+"'"+')" style="margin-left:5px;"><li class="glyphicon glyphicon-plus  "></li></a>';
             },
             edit:false},  ],
             onClickRow: function (row, $element) {
@@ -138,9 +141,51 @@ function initSubjectTable() {
             },
      });
 } 
+function addsubjectClass(courseCode) {
+    var childLists=$$('.admin-subject tr[data-uniqueid="'+courseCode+'"]').children;
+    $$('.modal-add-class .courseCode').value=childLists[2].innerHTML;
+
+    $(".modal-add-class-title").text("教学班添加");
+    $('.modal-add-class').modal();
+    $('.modal-add-class .btn-primary').on('click', function() {
+        layer.confirm('请确认添加教学班信息是否有误', {  
+            btn: ['确定', '取消']   
+        }, function(index) {  
+            layer.close(index);  
+            $.ajax({
+                type: "post",
+                url: `http://123.206.211.185:8080/cs/admin/jxbs?`,
+                contentType: "application/x-www-form-urlencoded;charset=UTF-8",
+                data: `courseCode=${$('.modal-add-class .courseCode').val()}&hashDay=${$('.modal-add-class .hashDay').val()}&hashLesson=${$('.modal-add-class .hashLesson').val()}&period=${$('.modal-add-class .period').val()}&classRoom=${$('.modal-add-class .classRoom').val()}&teacherId=${$('.modal-add-class .teacherId').val()}&week=${$('.modal-add-class .week').val()}&numLimit=${$('.modal-add-class .numLimit').val()}&credit=${$('.modal-add-class .credit').val()}&type=${$('.modal-add-class .type').val()}`,
+                success: function success(res) {
+                    console.log(res);
+                    if (res.status==0) {
+                        layer.alert('添加成功', {  
+                           icon: 1  
+                        });  
+                        $('button[name="refresh"]').click();
+                        console.log('add class account '+$('.stuId').val()+' successfully! and refresh');
+                        $('.modal-add-class button[data-dismiss="modal"]').click();
+                    } else {
+                        layer.alert(res.msg, {  
+                           icon: 2  
+                       });  
+                        console.log('failed add class account '+$('.stuId').val());
+                    }
+                },
+                error: function(a) {  
+                   layer.alert('添加失败', {  
+                       icon: 2  
+                   });  
+               },  
+               dataType: 'json'  
+            });
+        });  
+    });
+}
 
 function removesubjectData(courseCode) {
-    layer.confirm('您确定要删除' + courseCode + '账号吗?', {  
+    layer.confirm('您确定要删除课程代号为 ' + courseCode + ' 的课程吗?', {  
         btn: ['确定', '取消']   
     }, function(index) {  
         layer.close(index);  
