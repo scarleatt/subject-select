@@ -523,9 +523,6 @@
             <a class="list-group-item  second-item btn-teacher" data-class="btn-teacher">
               <i class="icon iconfont icon-datasource"></i>教师账户管理</a>
 
-            <span class="list-group-item first-item">专业管理</span>
-            <a class="list-group-item second-item btn-major" data-class="btn-major">
-              <i class="icon iconfont icon-allocation"></i>专业管理</a>
 
           </div>
         </div>
@@ -562,9 +559,9 @@
               </div>
 
               <div class="panel-body">
-                <div class="btn-group toolbar">
+                <!-- <div class="btn-group toolbar">
                   <button type="button" class="btn btn-primary btn-add-class">添加教学班</button>
-                </div>
+                </div> -->
                 <div class="table-responsive content-table">
                   <table class="table table-striped table-bordered table-hover add-admin-class"></table>
                 </div>
@@ -617,28 +614,6 @@
               </div>
             </div>
           </div>
-          <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-0 admin-major item"  style="display: none;">
-            <ul class="list-group path">
-               <li class="list-group-item">首页&nbsp;<span class="align-line">/</span>&nbsp;专业管理</li>
-            </ul>
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h3 class="panel-title">专业管理</h3>
-              </div>
-
-              <div class="panel-body">
-                <div class="table-responsive content-table">
-                  <table class="table table-striped table-bordered table-hover"></table>
-                </div>
-                <div class="page-ul">
-                  <div class="panel-left-btn">
-                    <button type="button" class="btn btn-primary">专业添加</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
         </div>
       </div>
     </div>
@@ -657,7 +632,7 @@
     <script src="../js/use/class.js">  </script>
     <script>
       var parent=$$('.all-item');
-      var childLists=['btn-subject','btn-class','btn-student','btn-teacher','btn-major'];
+      var childLists=['btn-subject','btn-class','btn-student','btn-teacher'];
       parent.addEventListener('click',function(ev){
           var ev = event||window.event;
           var target = ev.target || ev.srcElement;

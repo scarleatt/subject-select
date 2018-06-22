@@ -49,6 +49,7 @@ $(".btn-subject").bind("click", function () {
     initSubjectTable();
 }); 
 $('.btn-add-class').bind('click', function() {
+    console.log('clicked btn add class');
     $('.add-subject-table').bootstrapTable('destroy');  
     initSubjectTable();
 })
@@ -126,7 +127,7 @@ function initSubjectTable() {
             formatter: function(value,row,index){ 
             // return  '<a href="javascript:void(0);" onclick="removesubjectData('+ "'"+row.courseCode+"'" +')" style="margin-left:5px;"><li class="glyphicon glyphicon-remove"></li></a>';
                 return '<a href="javascript:void(0);" onclick="removesubjectData('+ "'"+row.courseCode+"'" +')" style="margin-left:5px;"><li class="glyphicon glyphicon-remove"></li></a>'+
-                '<a href="javascript:void(0);" onclick="addsubjectClass('+"'"+row.courseCode+"'"+')" style="margin-left:5px;"><li class="glyphicon glyphicon-plus  "></li></a>';
+                '<a href="javascript:void(0);" onclick="addsubjectClass('+"'"+row.courseCode+"'"+')" style="margin-left:5px;"><li class="glyphicon glyphicon-plus "></li></a>';
             },
             edit:false},  ],
             onClickRow: function (row, $element) {
